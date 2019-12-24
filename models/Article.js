@@ -12,8 +12,6 @@ const ArticleSchema = new Schema({
     },
     categoryId: {
         type: Schema.Types.ObjectId,
-        required: true,
-
     },
     keywords: {
         type: String,
@@ -21,17 +19,19 @@ const ArticleSchema = new Schema({
     },
     favCount: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     displayCount: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     source: {
         type: String,
         required: true
     },
-    creater: {
+    user: {
         type: String,
         required: true
     },
