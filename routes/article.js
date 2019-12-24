@@ -15,6 +15,16 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/top10', (req, res, next) => {
+    const promise = Article.find({}).limit(10).sort({favCount: -1});
+
+    promise.then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json(err)
+    });
+});
+
 router.get('/:articleId', (req, res, next) => {
     const promise = Article.findById(req.params.articleId);
 
