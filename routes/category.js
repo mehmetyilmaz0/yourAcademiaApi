@@ -5,7 +5,42 @@ const router = express.Router();
 const Category = require('../models/Category');
 
 router.get('/', (req, res, next) => {
-    const promise = Category.find({});
+    const promise = Category.aggregate([
+        {
+            $lookup: {
+                from:'articles',
+                localField: '_id',
+                foreignField: 'categoryId',
+                as: 'articles'
+            }
+        },
+        {
+            $unwind: {
+                path: '$articles',
+                preserveNullAndEmptyArrays: true
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    _id: '$_id',
+                    title: '$title',
+                    content: '$content'
+                },
+                articles: {
+                    $push: '$articles'
+                }
+            }
+        },
+        {
+            $project: {
+                _id: '$_id._id',
+                title: '$_id.title',
+                content: '$_id.content',
+                articles: '$articles'
+            }
+        }
+    ]);
 
     promise.then((data) => {
         res.json(data);
