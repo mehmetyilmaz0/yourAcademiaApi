@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api', verifyToken);
+app.use('/api', verifyToken); // token var mı yok mu kontrolu burada yapiliyor. Eger tokensiz yapilmak istenirse yorum satiri yapmalisin
 app.use('/api/articles', article);
 app.use('/api/categories', categories);
 
