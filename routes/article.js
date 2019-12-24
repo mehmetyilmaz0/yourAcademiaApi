@@ -19,6 +19,9 @@ router.get('/:articleId', (req, res, next) => {
     const promise = Article.findById(req.params.articleId);
 
     promise.then((data) => {
+        if(!data)
+            next({message: 'This Article was Not Found!', code: 1});
+
         res.json(data);
     }).catch((err) => {
         res.json(err)
