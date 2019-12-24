@@ -48,6 +48,19 @@ router.put('/:articleId', (req, res, next) => {
     });
 });
 
+router.delete('/:articleId', (req, res, next) => {
+    const promise = Article.findByIdAndRemove(req.params.articleId);
+
+    promise.then((data) => {
+        if (!data)
+            next({message: 'This Article was Not Found!', code: 1});
+
+        res.json({status: 1});
+    }).catch((err) => {
+        res.json(err)
+    });
+});
+
 router.post('/', (req, res, next) => {
     const {title, content, keywords, favCount, displayCount, source, user} = req.body;
 
