@@ -6,7 +6,13 @@ const Article = require('../models/Article');
 
 
 router.get('/', (req, res, next) => {
-    res.json({status: 1});
+    const promise = Article.find({});
+
+    promise.then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json(err)
+    });
 });
 
 router.post('/', (req, res, next) => {
@@ -32,12 +38,12 @@ router.post('/', (req, res, next) => {
     */
 
 // DB Save Method -2
-  const promise = article.save();
-  promise.then((data) => {
-    res.json({status: 1});
-  }).catch((err) => {
-    res.json(err);
-  })
+    const promise = article.save();
+    promise.then((data) => {
+        res.json({status: 1});
+    }).catch((err) => {
+        res.json(err);
+    })
 
 });
 
