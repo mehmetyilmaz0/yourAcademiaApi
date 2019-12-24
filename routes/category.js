@@ -102,6 +102,25 @@ router.get('/:categoryId', (req, res, next) => {
 
 });
 
+router.put('/:categoryId', (req, res, next) => {
+    const promise = Category.findByIdAndUpdate(
+        req.params.categoryId,
+        req.body,
+        {
+            new: true
+        }
+    );
+
+    promise.then((data) => {
+        if(!data)
+            next({message: 'This Category was Not Found', code: 1});
+
+        res.json(data)
+    }).catch((err) => {
+        res.json(err)
+    });
+});
+
 router.post('/', (req, res, next) => {
     const {title, content} = req.body;
 
