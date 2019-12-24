@@ -6,10 +6,10 @@ API for Academic Informations App
 | Route | HTTP Verb	 | POST body	 | Description	 |
 | --- | --- | --- | --- |
 | /api/articles | `GET` | Empty | List all articles. |
-| /api/articles | `POST` | {'title':'foo', 'category':'bar', 'content':'Turkey', categoryId:"id", keywords:'lorem,ipsum', favCount: '0', displayCount: '0', source: 'ww.lorem.com', creater: 'lorem_ipsum' }
+| /api/articles | `POST` | {'title':'foo', 'category':'bar', 'content':'Turkey', categoryId:"id", keywords:'lorem,ipsum', favCount: '0', displayCount: '0', source: 'ww.lorem.com', user: 'lorem_ipsum' }
  | Create a new article. |
 | /api/articles/:articleId | `GET` | Empty | Get a article. |
-| /api/articles/:articleId | `PUT` | {'title':'foo', 'category':'bar', 'content':'Turkey', categoryId:"id", keywords:'lorem,ipsum', favCount: '0', displayCount: '0', source: 'ww.lorem.com', creater: 'lorem_ipsum' }
+| /api/articles/:articleId | `PUT` | {'title':'foo', 'category':'bar', 'content':'Turkey', categoryId:"id", keywords:'lorem,ipsum', favCount: '0', displayCount: '0', source: 'ww.lorem.com', user: 'lorem_ipsum' }
  | Update a article with new info. |
 | /api/articles/:articleId | `DELETE` | Empty | Delete a article. |
 | /api/articles/top10 | `GET` | Empty | Get the top 10 articles. |
