@@ -72,11 +72,12 @@ router.delete('/:articleId', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const {title, content, keywords, favCount, displayCount, source, user} = req.body;
+    const {title, content, categoryId, keywords, favCount, displayCount, source, user} = req.body;
 
     const article = new Article({
         title: title,
         content: content,
+        categoryId: categoryId,
         keywords: keywords,
         favCount: favCount,
         displayCount: displayCount,
