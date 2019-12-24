@@ -15,6 +15,16 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/:articleId', (req, res, next) => {
+    const promise = Article.findById(req.params.articleId);
+
+    promise.then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json(err)
+    });
+});
+
 router.post('/', (req, res, next) => {
     const {title, content, keywords, favCount, displayCount, source, user} = req.body;
 
