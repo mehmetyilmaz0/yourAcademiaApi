@@ -28,6 +28,19 @@ router.get('/:articleId', (req, res, next) => {
     });
 });
 
+router.put('/:articleId', (req, res, next) => {
+    const promise = Article.findByIdAndUpdate(req.params.articleId, req.body);
+
+    promise.then((data) => {
+        if(!data)
+            next({message: 'This Article was Not Found!', code: 1});
+
+        res.json(data);
+    }).catch((err) => {
+        res.json(err)
+    });
+});
+
 router.post('/', (req, res, next) => {
     const {title, content, keywords, favCount, displayCount, source, user} = req.body;
 
