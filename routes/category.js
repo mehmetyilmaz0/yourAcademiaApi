@@ -121,6 +121,19 @@ router.put('/:categoryId', (req, res, next) => {
     });
 });
 
+router.delete('/:categoryId', (req, res, next) => {
+   const promise = findByIdAndRemove(req.params.categoryId);
+
+   promise.then((data) => {
+       if(!data)
+           next({message: 'This Category was Not Found', code: 1});
+
+       res.json({status: 1})
+   }).catch((err) => {
+       res.json(err)
+   });
+});
+
 router.post('/', (req, res, next) => {
     const {title, content} = req.body;
 
