@@ -6,7 +6,19 @@ const Article = require('../models/Article');
 
 
 router.get('/', (req, res, next) => {
-    const promise = Article.find({});
+    const promise = Article.aggregate([
+        {
+            $lookup: {
+                from: 'categories',
+                localField: 'categoryId',
+                foreignField: '_id',
+                as: 'category'
+            }
+        },
+        {
+            $unwind: '$category'
+        }
+    ]);
 
     promise.then((data) => {
         res.json(data);
