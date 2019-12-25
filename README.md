@@ -1,6 +1,10 @@
 # yourAcademiaApi
 API for Academic Informations App
 
+Database was made with Mongodb.
+
+Backend was made with Nodejs
+
 # Articles
 
 | Route | HTTP Verb	 | POST body	 | Description	 |
