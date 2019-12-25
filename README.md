@@ -30,3 +30,7 @@ API for Academic Informations App
 | --- | --- | --- | --- |
 | /register | `POST` | { username: 'foo', password:'1234' } | Create a new user. |
 | /authenticate | `POST` | { username: 'foo', password:'1234' } | Generate a token. |
+
+
+# Demo
+[Live demo on Heroku](https://api-your-academia-server.herokuapp.com/)
