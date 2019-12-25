@@ -19,9 +19,9 @@ API for Academic Informations App
 | Route | HTTP Verb	 | POST body	 | Description	 |
 | --- | --- | --- | --- |
 | /api/categories | `GET` | Empty | List all categories. |
-| /api/categories | `POST` | { name: 'foo', surname:'bar', bio:'lorem ipsum' } | Create a new category. |
+| /api/categories | `POST` | { title: 'foo', content:'bar' } | Create a new category. |
 | /api/categories/:categoryId | `GET` | Empty | Get a category. |
-| /api/categories/:categoryId | `PUT` | {'name':'foo', 'surname':'bar', 'bio': 'lorem'} | Update a category with new info. |
+| /api/categories/:categoryId | `PUT` | {'title':'foo', 'content':'bar'} | Update a category with new info. |
 | /api/categories/:categoryId | `DELETE` | Empty | Delete a category. |
 
 # Index
