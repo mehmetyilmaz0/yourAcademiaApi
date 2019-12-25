@@ -69,7 +69,7 @@ describe('/api/articles test', () => {
         });
     });
 
-    describe('/GET/:articleId artcile', () => {
+    describe('/GET/:articleId article', () => {
         it('(GET/ARTICLES/:articleId) ID ye Sahip Articleları Getirir', (done) => {
             chai.request(server)
                 .get('/api/articles/' + articleId)
@@ -85,7 +85,54 @@ describe('/api/articles test', () => {
                     res.body.should.have.property('displayCount');
                     res.body.should.have.property('source');
                     res.body.should.have.property('user');
-                    res.body.should.have.property('_id').eql(articleId );
+                    res.body.should.have.property('_id').eql(articleId);
+                    done();
+                });
+        });
+    });
+
+    describe('/PUT/:articleId article', () => {
+        it('(PUT/ARTICLES/:articleId) ID ye Sahip Article yi Update Eder', (done) => {
+            const article = {
+                title: 'Title_Mocha_Updated',
+                content: 'Content_Mocha_Updated',
+                categoryId: '5e020dcb796c631ca0bae02d',
+                keywords: 'Keywords_Mocha1_Updated,Keywords_Mocha2_Updated',
+                favCount: 0,
+                displayCount: 0,
+                source: 'www.sourceMocha_Updated.com',
+                user: 'admin_mocha_Updated'
+            };
+
+            chai.request(server)
+                .put('/api/articles/' + articleId)
+                .send(article)
+                .set('x-access-token', token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('title').eql(article.title);
+                    res.body.should.have.property('content').eql(article.content);
+                    res.body.should.have.property('categoryId').eql(article.categoryId);
+                    res.body.should.have.property('keywords').eql(article.keywords);
+                    res.body.should.have.property('favCount').eql(article.favCount);
+                    res.body.should.have.property('displayCount').eql(article.displayCount);
+                    res.body.should.have.property('source').eql(article.source);
+                    res.body.should.have.property('user').eql(article.user);
+                    done();
+                });
+        });
+    });
+
+    describe('/DELETE/:articleId article', () => {
+        it('(DELETE/ARTICLES/:articleId) ID ye Sahip Article yi Siler', (done) => {
+            chai.request(server)
+                .delete('/api/articles/' + articleId)
+                .set('x-access-token', token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('status').eql(1);
                     done();
                 });
         });
