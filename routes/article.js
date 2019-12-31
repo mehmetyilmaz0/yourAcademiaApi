@@ -38,7 +38,21 @@ router.get('/top10', (req, res, next) => {
 });
 
 router.get('/results/:count', (req, res, next) => {
-   const promise = Article.find({}).limit(Number(req.params.count)).sort({date: -1});
+   // const promise = Article.find({}).limit(Number(req.params.count)).sort({date: -1});
+
+    const promise = Article.aggregate([
+        {
+            $lookup: {
+                from: 'categories',
+                localField: 'categoryId',
+                foreignField: '_id',
+                as: 'category'
+            }
+        },
+        {
+            $unwind: '$category'
+        }
+    ]).limit(Number(req.params.count)).sort({date: -1});
 
    promise.then((data) => {
        res.json(data);
