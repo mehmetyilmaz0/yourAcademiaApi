@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const DefaultImage = require('../src/images/defaultImages.jpeg');
 
 const ArticleSchema = new Schema({
     title: {
@@ -48,7 +49,14 @@ const ArticleSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    imageUrl: {
+        type: String,
+        required: [true, '`{PATH}` Alanı Zorunludur...'],
+        minLength: [1, '`{PATH}` Alanının Uzunluğu `{VALUE}` den Küçük Olamaz '],
+        maxLength: [300, '`{PATH}` Alanının Uzunluğu `{VALUE}` den Büyük Olamaz '],
+        default: DefaultImage,
+    },
 
 });
 

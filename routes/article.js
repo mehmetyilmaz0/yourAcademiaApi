@@ -108,7 +108,7 @@ router.delete('/:articleId', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const {title, content, categoryId, keywords, favCount, displayCount, source, user} = req.body;
+    const {title, content, categoryId, keywords, favCount, displayCount, source, user, imageUrl} = req.body;
 
     const article = new Article({
         title: title,
@@ -118,7 +118,8 @@ router.post('/', (req, res, next) => {
         favCount: favCount,
         displayCount: displayCount,
         source: source,
-        user: user
+        user: user,
+        imageUrl: imageUrl
     });
     /* DB Save Method -1
 

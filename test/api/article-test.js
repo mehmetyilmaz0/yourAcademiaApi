@@ -44,7 +44,8 @@ describe('/api/articles test', () => {
                 favCount: 0,
                 displayCount: 0,
                 source: 'www.sourceMocha.com',
-                user: 'admin_mocha'
+                user: 'admin_mocha',
+                imageUrl: 'wwww.imageMocha.com'
             };
 
             chai.request(server)
@@ -62,6 +63,7 @@ describe('/api/articles test', () => {
                     res.body.should.have.property('displayCount');
                     res.body.should.have.property('source');
                     res.body.should.have.property('user');
+                    res.body.should.have.property('imageUrl');
 
                     articleId = res.body._id;
                     done();
@@ -85,6 +87,7 @@ describe('/api/articles test', () => {
                     res.body.should.have.property('displayCount');
                     res.body.should.have.property('source');
                     res.body.should.have.property('user');
+                    res.body.should.have.property('imageUrl');
                     res.body.should.have.property('_id').eql(articleId);
                     done();
                 });
@@ -101,7 +104,8 @@ describe('/api/articles test', () => {
                 favCount: 0,
                 displayCount: 0,
                 source: 'www.sourceMocha_Updated.com',
-                user: 'admin_mocha_Updated'
+                user: 'admin_mocha_Updated',
+                imageUrl: 'wwww.imageMocha.com'
             };
 
             chai.request(server)
@@ -119,6 +123,7 @@ describe('/api/articles test', () => {
                     res.body.should.have.property('displayCount').eql(article.displayCount);
                     res.body.should.have.property('source').eql(article.source);
                     res.body.should.have.property('user').eql(article.user);
+                    res.body.should.have.property('imageUrl').eql(article.imageUrl);
                     done();
                 });
         });
