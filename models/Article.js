@@ -55,7 +55,7 @@ const ArticleSchema = new Schema({
         required: [true, '`{PATH}` Alanı Zorunludur...'],
         minLength: [1, '`{PATH}` Alanının Uzunluğu `{VALUE}` den Küçük Olamaz '],
         maxLength: [300, '`{PATH}` Alanının Uzunluğu `{VALUE}` den Büyük Olamaz '],
-        default: DefaultImage,
+        default: 'https://picsum.photos/750/1260',
     },
 
 });
