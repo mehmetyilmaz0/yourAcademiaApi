@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const DefaultImage = require('../src/images/defaultImages.jpeg');
 
 const ArticleSchema = new Schema({
     title: {
